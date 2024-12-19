@@ -1,0 +1,73 @@
++<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to my website!</h1>
+
+    <div id="myDiv">
+        <p>This is a paragraph.</p>
+        <p>This is another paragraph.</p>
+    </div>
+    <script>
+        // Select the div element
+        const div = document.getElementById('myDiv');
+        
+        // Add a click event listener to the div element
+        div.addEventListener('click', function() {
+            // Get the text content of the paragraph elements
+            const paragraphText = Array.from(this.getElementsByTagName('p')).map(p => p.textContent).join(' ');
+            
+            // Display the text content in an alert box
+            alert(paragraphText);
+        });
+        // Add a keydown event listener to the document
+        document.addEventListener('keydown', function(event) {
+            // Check if the key pressed is the 'Enter' key
+            if (event.key === 'Enter') {
+                // Get the text content of the paragraph elements
+                const paragraphText = Array.from(this.getElementsByTagName('p')).map(p => p.textContent).join(' ');
+                
+                // Display the text content in an alert box
+                alert(paragraphText);
+            }
+        });
+        // Add a mouseover event listener to the div element
+        div.addEventListener('mouseover', function() {
+            // Change the background color of the div element to red
+            this.style.backgroundColor ='red';
+        });
+        // Add a mouseout event listener to the div element
+        div.addEventListener('mouseout', function() {
+            // Change the background color of the div element back to white
+            this.style.backgroundColor = 'white';
+        });
+        // Add a contextmenu event listener to the div element
+        div.addEventListener('contextmenu', function(event) {
+            // Prevent the default context menu from appearing
+            event.preventDefault();
+            
+            // Get the text content of the paragraph elements
+            const paragraphText = Array.from(this.getElementsByTagName('p')).map(p => p.textContent).join(' ');
+            
+            // Display the text content in a confirmation box
+            if (confirm(`Are you sure you want to delete the following text:\n\n${paragraphText}`)) {
+                // Remove the paragraph elements from the div element
+                this.innerHTML = '';
+            }
+        });
+        // Add a double-click event listener to the div element
+        div.addEventListener('dblclick', function() {
+            // Add a new paragraph element to the div element
+            const newParagraph = document.createElement('p');
+            newParagraph.textContent = 'New paragraph';
+            this.appendChild(newParagraph);
+        });
+        
+    </script>
+
+</body>
+</html>
